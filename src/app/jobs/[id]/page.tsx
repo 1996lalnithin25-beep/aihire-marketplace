@@ -27,7 +27,7 @@ export default function JobDetailPage({ params }: { params: Promise<{ id: string
   return (
     <div className="min-h-screen py-8 bg-grid">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-        <Link href="/jobs" className="inline-flex items-center gap-2 text-slate-400 hover:text-white mb-6 transition-colors">
+        <Link href="/jobs" className="inline-flex items-center gap-2 text-gray-600 hover:text-gray-900 mb-6 transition-colors">
           <ArrowLeft className="w-4 h-4" /> Back to Jobs
         </Link>
 
@@ -35,27 +35,27 @@ export default function JobDetailPage({ params }: { params: Promise<{ id: string
           <div className="flex items-start justify-between mb-4">
             <div>
               <div className="flex items-center gap-2 mb-2">
-                <span className="badge badge-blue">{job.type === "STANDARD" ? "AI Project" : "Data Task"}</span>
-                <span className="text-sm text-slate-500">Posted {job.posted}</span>
+                <span className="badge badge-primary">{job.type === "STANDARD" ? "AI Project" : "Data Task"}</span>
+                <span className="text-sm text-gray-500">Posted {job.posted}</span>
               </div>
-              <h1 className="text-2xl font-bold text-white mb-2">{job.title}</h1>
-              <p className="text-slate-400">by {job.client}</p>
+              <h1 className="text-2xl font-bold text-gray-900 mb-2">{job.title}</h1>
+              <p className="text-gray-600">by {job.client}</p>
             </div>
           </div>
 
           <div className="flex flex-wrap gap-4 mb-6 text-sm">
-            <span className="flex items-center gap-1 text-white font-semibold"><DollarSign className="w-4 h-4 text-green-400" />{job.budget}</span>
-            <span className="flex items-center gap-1 text-slate-400"><Clock className="w-4 h-4" />{job.duration}</span>
-            <span className="flex items-center gap-1 text-slate-400"><Briefcase className="w-4 h-4" />{job.proposals} proposals</span>
+            <span className="flex items-center gap-1 text-gray-900 font-semibold"><DollarSign className="w-4 h-4 text-green-400" />{job.budget}</span>
+            <span className="flex items-center gap-1 text-gray-600"><Clock className="w-4 h-4" />{job.duration}</span>
+            <span className="flex items-center gap-1 text-gray-600"><Briefcase className="w-4 h-4" />{job.proposals} proposals</span>
           </div>
 
           <div className="flex flex-wrap gap-2 mb-6">
-            {job.skills.map(s => <span key={s} className="badge badge-blue">{s}</span>)}
+            {job.skills.map(s => <span key={s} className="badge badge-primary">{s}</span>)}
           </div>
 
           <div className="prose prose-invert max-w-none">
-            <h3 className="text-lg font-semibold text-white mb-3">Description</h3>
-            <p className="text-slate-300 whitespace-pre-line text-sm leading-relaxed">{job.description}</p>
+            <h3 className="text-lg font-semibold text-gray-900 mb-3">Description</h3>
+            <p className="text-gray-700 whitespace-pre-line text-sm leading-relaxed">{job.description}</p>
           </div>
         </div>
 
@@ -66,23 +66,23 @@ export default function JobDetailPage({ params }: { params: Promise<{ id: string
           </button>
         ) : (
           <div className="glass rounded-2xl p-8">
-            <h2 className="text-xl font-bold text-white mb-6">Submit Your Proposal</h2>
+            <h2 className="text-xl font-bold text-gray-900 mb-6">Submit Your Proposal</h2>
             <div className="space-y-4">
               <div>
-                <label className="block text-sm font-medium text-slate-300 mb-1.5">Cover Letter *</label>
+                <label className="block text-sm font-medium text-gray-700 mb-1.5">Cover Letter *</label>
                 <textarea value={coverLetter} onChange={e => setCoverLetter(e.target.value)} className="input-dark min-h-[150px] resize-y" placeholder="Explain why you're the best fit for this project..." />
               </div>
               <div className="grid grid-cols-2 gap-4">
-                <div><label className="block text-sm font-medium text-slate-300 mb-1.5">Proposed Rate ($)</label>
+                <div><label className="block text-sm font-medium text-gray-700 mb-1.5">Proposed Rate ($)</label>
                   <input type="number" value={proposedRate} onChange={e => setProposedRate(e.target.value)} className="input-dark" placeholder="4000" /></div>
-                <div><label className="block text-sm font-medium text-slate-300 mb-1.5">Estimated Timeline (days)</label>
+                <div><label className="block text-sm font-medium text-gray-700 mb-1.5">Estimated Timeline (days)</label>
                   <input type="number" value={timeline} onChange={e => setTimeline(e.target.value)} className="input-dark" placeholder="14" /></div>
               </div>
               <div>
-                <label className="block text-sm font-medium text-slate-300 mb-1.5">Attachments</label>
-                <div className="border-2 border-dashed border-white/10 rounded-xl p-6 text-center cursor-pointer hover:border-blue-500/30 transition-colors">
+                <label className="block text-sm font-medium text-gray-700 mb-1.5">Attachments</label>
+                <div className="border-2 border-dashed border-gray-200 rounded-xl p-6 text-center cursor-pointer hover:border-blue-500/30 transition-colors">
                   <Paperclip className="w-6 h-6 text-slate-600 mx-auto mb-1" />
-                  <p className="text-sm text-slate-400">Attach portfolio samples</p>
+                  <p className="text-sm text-gray-600">Attach portfolio samples</p>
                 </div>
               </div>
               <div className="flex gap-3">

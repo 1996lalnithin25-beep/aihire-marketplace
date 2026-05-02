@@ -13,7 +13,7 @@ const DEMO_TASKS = [
 ];
 
 const typeIcons: Record<string, any> = { TEXT: MessageSquare, AUDIO: Mic, IMAGE: Eye, VIDEO: Eye };
-const typeColors: Record<string, string> = { LABELING: "badge-blue", RECORDING: "badge-purple", PREFERENCE_RANKING: "badge-amber", TRANSCRIPTION: "badge-green", SURVEY: "badge-teal", ANNOTATION: "badge-blue" };
+const typeColors: Record<string, string> = { LABELING: "badge-primary", RECORDING: "badge-purple", PREFERENCE_RANKING: "badge-amber", TRANSCRIPTION: "badge-green", SURVEY: "badge-primary", ANNOTATION: "badge-primary" };
 
 export default function TaskBoardPage() {
   const [search, setSearch] = useState("");
@@ -32,18 +32,18 @@ export default function TaskBoardPage() {
           <div>
             <div className="flex items-center gap-2 mb-2">
               <Database className="w-6 h-6 text-teal-400" />
-              <h1 className="text-3xl font-bold text-white">Data Task Hub</h1>
+              <h1 className="text-3xl font-bold text-gray-900">Data Task Hub</h1>
             </div>
-            <p className="text-slate-400">Browse and start data collection micro-tasks</p>
+            <p className="text-gray-600">Browse and start data collection micro-tasks</p>
           </div>
           <div className="flex items-center gap-3">
-            <span className="badge badge-teal"><Zap className="w-3 h-3" /> 6 tasks available</span>
+            <span className="badge badge-primary"><Zap className="w-3 h-3" /> 6 tasks available</span>
           </div>
         </div>
 
         <div className="flex gap-3 mb-6">
           <div className="flex-1 relative">
-            <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-500" />
+            <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-500" />
             <input value={search} onChange={e => setSearch(e.target.value)} placeholder="Search tasks..." className="input-dark pl-11 py-3" />
           </div>
           <select value={filterType} onChange={e => setFilterType(e.target.value)} className="input-dark w-48">
@@ -69,10 +69,10 @@ export default function TaskBoardPage() {
                       <Icon className="w-5 h-5 text-teal-400" />
                     </div>
                     <div>
-                      <h3 className="font-semibold text-white text-sm">{task.title}</h3>
+                      <h3 className="font-semibold text-gray-900 text-sm">{task.title}</h3>
                       <div className="flex gap-1.5 mt-1">
-                        <span className={`badge text-xs ${typeColors[task.taskType] || "badge-blue"}`}>{task.taskType.replace(/_/g, " ")}</span>
-                        <span className="badge badge-teal text-xs">{task.dataType}</span>
+                        <span className={`badge text-xs ${typeColors[task.taskType] || "badge-primary"}`}>{task.taskType.replace(/_/g, " ")}</span>
+                        <span className="badge badge-primary text-xs">{task.dataType}</span>
                       </div>
                     </div>
                   </div>
@@ -81,36 +81,36 @@ export default function TaskBoardPage() {
                 <div className="grid grid-cols-3 gap-3 my-4 text-center">
                   <div className="p-2 rounded-lg bg-white/[0.02]">
                     <p className="text-lg font-bold text-teal-400">${task.payPerItem}</p>
-                    <p className="text-xs text-slate-500">per item</p>
+                    <p className="text-xs text-gray-500">per item</p>
                   </div>
                   <div className="p-2 rounded-lg bg-white/[0.02]">
-                    <p className="text-lg font-bold text-white">{task.estTime}s</p>
-                    <p className="text-xs text-slate-500">est. time</p>
+                    <p className="text-lg font-bold text-gray-900">{task.estTime}s</p>
+                    <p className="text-xs text-gray-500">est. time</p>
                   </div>
                   <div className="p-2 rounded-lg bg-white/[0.02]">
-                    <p className="text-lg font-bold text-white">{remaining.toLocaleString()}</p>
-                    <p className="text-xs text-slate-500">remaining</p>
+                    <p className="text-lg font-bold text-gray-900">{remaining.toLocaleString()}</p>
+                    <p className="text-xs text-gray-500">remaining</p>
                   </div>
                 </div>
 
                 <div className="mb-4">
                   <div className="flex justify-between text-xs mb-1">
-                    <span className="text-slate-500">Progress</span>
+                    <span className="text-gray-500">Progress</span>
                     <span className="text-teal-400">{pct}%</span>
                   </div>
-                  <div className="w-full h-2 rounded-full bg-white/5">
+                  <div className="w-full h-2 rounded-full bg-gray-100">
                     <div className="h-full rounded-full bg-gradient-to-r from-teal-500 to-emerald-400 progress-bar" style={{ width: `${pct}%` }} />
                   </div>
                 </div>
 
                 <div className="flex flex-wrap gap-1.5 mb-4">
-                  {task.languages.map(l => <span key={l} className="px-2 py-0.5 rounded-md bg-white/5 text-xs text-slate-400 border border-white/5"><Globe className="w-3 h-3 inline mr-1" />{l}</span>)}
-                  <span className="px-2 py-0.5 rounded-md bg-white/5 text-xs text-slate-400 border border-white/5">{task.device}</span>
+                  {task.languages.map(l => <span key={l} className="px-2 py-0.5 rounded-md bg-gray-100 text-xs text-gray-600 border border-gray-200"><Globe className="w-3 h-3 inline mr-1" />{l}</span>)}
+                  <span className="px-2 py-0.5 rounded-md bg-gray-100 text-xs text-gray-600 border border-gray-200">{task.device}</span>
                 </div>
 
-                <div className="flex items-center justify-between pt-4 border-t border-white/5">
-                  <span className="text-xs text-slate-500">Due {new Date(task.deadline).toLocaleDateString()}</span>
-                  <Link href={`/tasks/${task.id}/workspace`} className="btn-teal text-sm py-2 px-4 flex items-center gap-1.5">
+                <div className="flex items-center justify-between pt-4 border-t border-gray-200">
+                  <span className="text-xs text-gray-500">Due {new Date(task.deadline).toLocaleDateString()}</span>
+                  <Link href={`/tasks/${task.id}/workspace`} className="btn-primary text-sm py-2 px-4 flex items-center gap-1.5">
                     <Play className="w-3 h-3" /> Start Task
                   </Link>
                 </div>

@@ -54,24 +54,24 @@ function JobCard({ job }: { job: Job }) {
             <Icon className={`w-5 h-5 ${isData ? "text-teal-400" : "text-blue-400"}`} />
           </div>
           <div>
-            <h3 className="font-semibold text-white group-hover:text-blue-400 transition-colors line-clamp-1">
+            <h3 className="font-semibold text-gray-900 group-hover:text-blue-400 transition-colors line-clamp-1">
               {job.title}
             </h3>
-            <p className="text-sm text-slate-500">{job.client.name}</p>
+            <p className="text-sm text-gray-500">{job.client.name}</p>
           </div>
         </div>
-        <span className={`badge text-xs shrink-0 ${isData ? "badge-teal" : "badge-blue"}`}>
+        <span className={`badge text-xs shrink-0 ${isData ? "badge-primary" : "badge-primary"}`}>
           {isData ? "Data Task" : "AI Project"}
         </span>
       </div>
 
-      <p className="text-sm text-slate-400 line-clamp-2 mb-4">{job.description}</p>
+      <p className="text-sm text-gray-600 line-clamp-2 mb-4">{job.description}</p>
 
       {/* Tags */}
       <div className="flex flex-wrap gap-1.5 mb-4">
         {isData && job.campaign && (
           <>
-            <span className="badge badge-teal text-xs">{job.campaign.dataType}</span>
+            <span className="badge badge-primary text-xs">{job.campaign.dataType}</span>
             <span className="badge badge-purple text-xs">{job.campaign.taskType.replace("_", " ")}</span>
             {job.campaign.languagesRequired.slice(0, 2).map((l) => (
               <span key={l} className="badge badge-amber text-xs">{l}</span>
@@ -79,16 +79,16 @@ function JobCard({ job }: { job: Job }) {
           </>
         )}
         {job.skills.slice(0, 3).map((s) => (
-          <span key={s.id} className="px-2 py-0.5 rounded-md bg-white/5 text-xs text-slate-400 border border-white/5">
+          <span key={s.id} className="px-2 py-0.5 rounded-md bg-gray-100 text-xs text-gray-600 border border-gray-200">
             {s.name}
           </span>
         ))}
       </div>
 
-      <div className="flex items-center justify-between pt-4 border-t border-white/5">
-        <div className="flex items-center gap-4 text-sm text-slate-500">
+      <div className="flex items-center justify-between pt-4 border-t border-gray-200">
+        <div className="flex items-center gap-4 text-sm text-gray-500">
           {(job.budgetMin || job.budgetMax) && (
-            <span className="flex items-center gap-1 text-white font-semibold">
+            <span className="flex items-center gap-1 text-gray-900 font-semibold">
               <DollarSign className="w-3.5 h-3.5 text-green-400" />
               {job.budgetMin && job.budgetMax
                 ? `$${job.budgetMin} - $${job.budgetMax}`
@@ -147,8 +147,8 @@ export default function BrowseJobsPage() {
         {/* Header */}
         <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-8">
           <div>
-            <h1 className="text-3xl font-bold text-white mb-2">Browse Jobs</h1>
-            <p className="text-slate-400">Find AI projects and data collection tasks</p>
+            <h1 className="text-3xl font-bold text-gray-900 mb-2">Browse Jobs</h1>
+            <p className="text-gray-600">Find AI projects and data collection tasks</p>
           </div>
           <Link href="/jobs/post" className="btn-primary flex items-center gap-2 shrink-0">
             <Plus className="w-4 h-4" /> Post a Job
@@ -156,7 +156,7 @@ export default function BrowseJobsPage() {
         </div>
 
         {/* Tab toggle */}
-        <div className="flex items-center gap-1 p-1 rounded-xl bg-white/5 mb-6 w-fit">
+        <div className="flex items-center gap-1 p-1 rounded-xl bg-gray-100 mb-6 w-fit">
           {[
             { key: "all", label: "All Jobs" },
             { key: "standard", label: "AI Projects", icon: Briefcase },
@@ -170,7 +170,7 @@ export default function BrowseJobsPage() {
                   ? tab.key === "data"
                     ? "bg-teal-500/20 text-teal-400"
                     : "bg-blue-500/20 text-blue-400"
-                  : "text-slate-500 hover:text-slate-300"
+                  : "text-gray-500 hover:text-gray-700"
               }`}
             >
               {tab.icon && <tab.icon className="w-4 h-4" />}
@@ -182,7 +182,7 @@ export default function BrowseJobsPage() {
         {/* Search */}
         <div className="flex gap-3 mb-6">
           <div className="flex-1 relative">
-            <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-500" />
+            <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-500" />
             <input
               type="text"
               value={search}
@@ -194,7 +194,7 @@ export default function BrowseJobsPage() {
         </div>
 
         {/* Results */}
-        <p className="text-sm text-slate-500 mb-4">
+        <p className="text-sm text-gray-500 mb-4">
           {loading ? "Loading..." : `${filtered.length} jobs found`}
         </p>
 
@@ -224,8 +224,8 @@ export default function BrowseJobsPage() {
         {!loading && filtered.length === 0 && (
           <div className="text-center py-20">
             <Briefcase className="w-12 h-12 text-slate-600 mx-auto mb-4" />
-            <h3 className="text-lg font-semibold text-white mb-2">No jobs found</h3>
-            <p className="text-slate-500">Try adjusting your filters or check back later</p>
+            <h3 className="text-lg font-semibold text-gray-900 mb-2">No jobs found</h3>
+            <p className="text-gray-500">Try adjusting your filters or check back later</p>
           </div>
         )}
       </div>

@@ -82,7 +82,7 @@ export default function LandingPage() {
             </h1>
 
             <p
-              className="text-lg sm:text-xl text-slate-400 max-w-2xl mx-auto mb-10 animate-fade-in-up"
+              className="text-lg sm:text-xl text-gray-600 max-w-2xl mx-auto mb-10 animate-fade-in-up"
               style={{ animationDelay: "0.2s" }}
             >
               From prompt engineering to training data collection — find elite AI
@@ -97,14 +97,14 @@ export default function LandingPage() {
             >
               <div className="relative group">
                 <div className="absolute -inset-0.5 bg-gradient-to-r from-blue-500 via-purple-500 to-teal-500 rounded-2xl opacity-20 group-hover:opacity-40 blur transition-all" />
-                <div className="relative flex items-center bg-navy-900 rounded-2xl border border-white/10">
-                  <Search className="w-5 h-5 text-slate-500 ml-5" />
+                <div className="relative flex items-center bg-white rounded-2xl border border-gray-200">
+                  <Search className="w-5 h-5 text-gray-500 ml-5" />
                   <input
                     type="text"
                     placeholder='Try "Prompt Engineer", "Data Labeler", "RAG Developer"...'
                     value={searchQuery}
                     onChange={(e) => setSearchQuery(e.target.value)}
-                    className="flex-1 bg-transparent px-4 py-4 text-white placeholder:text-slate-600 outline-none text-base"
+                    className="flex-1 bg-transparent px-4 py-4 text-gray-900 placeholder:text-slate-600 outline-none text-base"
                   />
                   <Link
                     href={`/freelancers?q=${encodeURIComponent(searchQuery)}`}
@@ -120,7 +120,7 @@ export default function LandingPage() {
                   <Link
                     key={tag}
                     href={`/freelancers?q=${encodeURIComponent(tag)}`}
-                    className="px-3 py-1 rounded-full text-xs font-medium bg-white/5 text-slate-500 hover:bg-white/10 hover:text-slate-300 transition-all border border-white/5"
+                    className="px-3 py-1 rounded-full text-xs font-medium bg-gray-100 text-gray-500 hover:bg-gray-200 hover:text-gray-700 transition-all border border-gray-200"
                   >
                     {tag}
                   </Link>
@@ -135,15 +135,15 @@ export default function LandingPage() {
             >
               <div className="flex -space-x-2">
                 {[
-                  "from-blue-500 to-indigo-600",
-                  "from-purple-500 to-pink-600",
-                  "from-teal-500 to-emerald-600",
-                  "from-orange-500 to-red-600",
-                  "from-cyan-500 to-blue-600",
+                  "bg-green-100 text-green-700",
+                  "bg-green-200 text-green-800",
+                  "bg-amber-100 text-amber-700",
+                  "bg-amber-200 text-amber-800",
+                  "bg-teal-100 text-teal-700",
                 ].map((gradient, i) => (
                   <div
                     key={i}
-                    className={`w-10 h-10 rounded-full bg-gradient-to-br ${gradient} border-2 border-navy-950 flex items-center justify-center text-white text-xs font-bold`}
+                    className={`w-10 h-10 rounded-full ${gradient} border-2 border-white flex items-center justify-center text-xs font-bold`}
                   >
                     {String.fromCharCode(65 + i)}
                   </div>
@@ -155,8 +155,8 @@ export default function LandingPage() {
                     <Star key={i} className="w-4 h-4 fill-amber-400 text-amber-400" />
                   ))}
                 </div>
-                <p className="text-sm text-slate-500">
-                  Trusted by <span className="text-white font-semibold">12,500+</span> AI professionals
+                <p className="text-sm text-gray-500">
+                  Trusted by <span className="text-gray-900 font-semibold">12,500+</span> AI professionals
                 </p>
               </div>
             </div>
@@ -168,15 +168,15 @@ export default function LandingPage() {
       </section>
 
       {/* ── STATS BAR ── */}
-      <section className="relative py-12 border-y border-white/5">
+      <section className="relative py-12 border-y border-gray-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
             {STATS.map((stat) => (
               <div key={stat.label} className="text-center">
-                <div className="text-3xl lg:text-4xl font-black text-white">
+                <div className="text-3xl lg:text-4xl font-black text-gray-900">
                   <AnimatedCounter target={stat.value} suffix={stat.suffix} />
                 </div>
-                <p className="text-sm text-slate-500 mt-1">{stat.label}</p>
+                <p className="text-sm text-gray-500 mt-1">{stat.label}</p>
               </div>
             ))}
           </div>
@@ -187,10 +187,10 @@ export default function LandingPage() {
       <section id="categories" className="relative py-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4">
+            <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
               Explore AI Specializations
             </h2>
-            <p className="text-slate-400 max-w-2xl mx-auto">
+            <p className="text-gray-600 max-w-2xl mx-auto">
               Browse top categories across AI development and training data collection
             </p>
           </div>
@@ -212,7 +212,7 @@ export default function LandingPage() {
                 >
                   {isFeatured && (
                     <div className="absolute top-3 right-3">
-                      <span className="badge badge-teal text-xs">
+                      <span className="badge badge-primary text-xs">
                         <Sparkles className="w-3 h-3" /> Featured
                       </span>
                     </div>
@@ -220,12 +220,12 @@ export default function LandingPage() {
                   <div
                     className={`w-12 h-12 rounded-xl bg-gradient-to-br ${cat.color} flex items-center justify-center mb-4 group-hover:scale-110 transition-transform`}
                   >
-                    <Icon className="w-6 h-6 text-white" />
+                    <Icon className="w-6 h-6 text-gray-900" />
                   </div>
-                  <h3 className="text-lg font-semibold text-white mb-2 group-hover:gradient-text transition-all">
+                  <h3 className="text-lg font-semibold text-gray-900 mb-2 group-hover:gradient-text transition-all">
                     {cat.name}
                   </h3>
-                  <div className="flex items-center text-sm text-slate-500 group-hover:text-slate-400">
+                  <div className="flex items-center text-sm text-gray-500 group-hover:text-gray-600">
                     Browse talent <ChevronRight className="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform" />
                   </div>
                 </Link>
@@ -243,14 +243,14 @@ export default function LandingPage() {
             <div className="absolute top-0 right-0 w-64 h-64 bg-gradient-to-bl from-teal-500/10 to-transparent rounded-bl-full" />
             <div className="grid lg:grid-cols-2 gap-12 items-center relative">
               <div>
-                <span className="badge badge-teal mb-6">
+                <span className="badge badge-primary mb-6">
                   <Database className="w-3 h-3" /> AI Training Data Platform
                 </span>
-                <h2 className="text-3xl sm:text-4xl font-bold text-white mb-6">
+                <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-6">
                   Power AI with{" "}
                   <span className="gradient-text-teal">Human Data</span>
                 </h2>
-                <p className="text-slate-400 mb-8 text-lg">
+                <p className="text-gray-600 mb-8 text-lg">
                   Our dedicated Data Collection Hub connects you with verified contributors
                   worldwide for text labeling, audio recording, image annotation, RLHF, and more.
                 </p>
@@ -263,12 +263,12 @@ export default function LandingPage() {
                   ].map((item, i) => (
                     <div key={i} className="flex items-start gap-3">
                       <CheckCircle className="w-5 h-5 text-teal-400 mt-0.5 shrink-0" />
-                      <p className="text-slate-300">{item}</p>
+                      <p className="text-gray-700">{item}</p>
                     </div>
                   ))}
                 </div>
                 <div className="flex gap-4">
-                  <Link href="/tasks" className="btn-teal flex items-center gap-2">
+                  <Link href="/tasks" className="btn-primary flex items-center gap-2">
                     Explore Data Tasks <ArrowRight className="w-4 h-4" />
                   </Link>
                   <Link href="/jobs/post?type=data" className="btn-secondary flex items-center gap-2 !border-teal-500/30 !text-teal-400">
@@ -287,8 +287,8 @@ export default function LandingPage() {
                     <div className={`w-10 h-10 mx-auto mb-3 rounded-lg bg-${item.color}-500/10 flex items-center justify-center`}>
                       <item.icon className={`w-5 h-5 text-${item.color}-400`} />
                     </div>
-                    <p className="text-sm font-semibold text-white">{item.label}</p>
-                    <p className="text-xs text-slate-500 mt-1">{item.count}</p>
+                    <p className="text-sm font-semibold text-gray-900">{item.label}</p>
+                    <p className="text-xs text-gray-500 mt-1">{item.count}</p>
                   </div>
                 ))}
               </div>
@@ -301,10 +301,10 @@ export default function LandingPage() {
       <section id="how-it-works" className="relative py-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4">
+            <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
               How It Works
             </h2>
-            <p className="text-slate-400 max-w-2xl mx-auto">
+            <p className="text-gray-600 max-w-2xl mx-auto">
               Get started in minutes — whether you&apos;re hiring AI talent or contributing data
             </p>
           </div>
@@ -312,7 +312,7 @@ export default function LandingPage() {
           <div className="grid md:grid-cols-2 gap-12">
             {/* For Clients */}
             <div>
-              <h3 className="text-xl font-bold text-white mb-8 flex items-center gap-2">
+              <h3 className="text-xl font-bold text-gray-900 mb-8 flex items-center gap-2">
                 <Briefcase className="w-5 h-5 text-blue-400" /> For Clients
               </h3>
               <div className="space-y-8">
@@ -322,12 +322,12 @@ export default function LandingPage() {
                   { step: "3", title: "Get Results", desc: "Work together through our platform. Track milestones, manage data batches, and download datasets." },
                 ].map((item) => (
                   <div key={item.step} className="flex gap-5">
-                    <div className="w-10 h-10 shrink-0 rounded-xl bg-gradient-to-br from-blue-500 to-indigo-600 flex items-center justify-center text-white font-bold text-sm">
+                    <div className="w-10 h-10 shrink-0 rounded-xl bg-green-100 flex items-center justify-center text-green-700 font-bold text-sm">
                       {item.step}
                     </div>
                     <div>
-                      <h4 className="text-base font-semibold text-white mb-1">{item.title}</h4>
-                      <p className="text-sm text-slate-400">{item.desc}</p>
+                      <h4 className="text-base font-semibold text-gray-900 mb-1">{item.title}</h4>
+                      <p className="text-sm text-gray-600">{item.desc}</p>
                     </div>
                   </div>
                 ))}
@@ -336,7 +336,7 @@ export default function LandingPage() {
 
             {/* For Freelancers/Contributors */}
             <div>
-              <h3 className="text-xl font-bold text-white mb-8 flex items-center gap-2">
+              <h3 className="text-xl font-bold text-gray-900 mb-8 flex items-center gap-2">
                 <Users className="w-5 h-5 text-teal-400" /> For Freelancers & Data Contributors
               </h3>
               <div className="space-y-8">
@@ -346,12 +346,12 @@ export default function LandingPage() {
                   { step: "3", title: "Build Your Reputation", desc: "Complete tasks, earn reviews, and increase your accuracy score. Higher scores unlock premium tasks." },
                 ].map((item) => (
                   <div key={item.step} className="flex gap-5">
-                    <div className="w-10 h-10 shrink-0 rounded-xl bg-gradient-to-br from-teal-500 to-emerald-600 flex items-center justify-center text-white font-bold text-sm">
+                    <div className="w-10 h-10 shrink-0 rounded-xl bg-gradient-to-br from-teal-500 to-emerald-600 flex items-center justify-center text-gray-900 font-bold text-sm">
                       {item.step}
                     </div>
                     <div>
-                      <h4 className="text-base font-semibold text-white mb-1">{item.title}</h4>
-                      <p className="text-sm text-slate-400">{item.desc}</p>
+                      <h4 className="text-base font-semibold text-gray-900 mb-1">{item.title}</h4>
+                      <p className="text-sm text-gray-600">{item.desc}</p>
                     </div>
                   </div>
                 ))}
@@ -362,7 +362,7 @@ export default function LandingPage() {
       </section>
 
       {/* ── TRUST BAR ── */}
-      <section className="py-16 border-t border-white/5">
+      <section className="py-16 border-t border-gray-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid sm:grid-cols-3 gap-8">
             {[
@@ -371,11 +371,11 @@ export default function LandingPage() {
               { icon: Clock, title: "24/7 Support", desc: "Dedicated support team available around the clock to help with any issues." },
             ].map((item) => (
               <div key={item.title} className="text-center">
-                <div className="w-14 h-14 mx-auto mb-4 rounded-2xl bg-gradient-to-br from-blue-500/10 to-purple-500/10 border border-blue-500/10 flex items-center justify-center">
-                  <item.icon className="w-7 h-7 text-blue-400" />
+                <div className="w-14 h-14 mx-auto mb-4 rounded-2xl bg-green-50 border border-green-100 flex items-center justify-center">
+                  <item.icon className="w-7 h-7 text-green-600" />
                 </div>
-                <h3 className="text-base font-semibold text-white mb-2">{item.title}</h3>
-                <p className="text-sm text-slate-500">{item.desc}</p>
+                <h3 className="text-base font-semibold text-gray-900 mb-2">{item.title}</h3>
+                <p className="text-sm text-gray-500">{item.desc}</p>
               </div>
             ))}
           </div>
@@ -385,14 +385,13 @@ export default function LandingPage() {
       {/* ── CTA ── */}
       <section className="py-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="relative rounded-3xl overflow-hidden">
-            <div className="absolute inset-0 bg-gradient-to-r from-blue-600/20 via-purple-600/20 to-teal-600/20" />
+          <div className="relative rounded-3xl overflow-hidden bg-green-50">
             <div className="absolute inset-0 bg-grid opacity-30" />
             <div className="relative px-8 py-16 lg:py-20 text-center">
-              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-6">
+              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 mb-6">
                 Ready to Shape the Future of AI?
               </h2>
-              <p className="text-lg text-slate-400 max-w-2xl mx-auto mb-10">
+              <p className="text-lg text-gray-600 max-w-2xl mx-auto mb-10">
                 Join thousands of AI professionals and data contributors building the
                 next generation of intelligent systems.
               </p>
@@ -400,7 +399,7 @@ export default function LandingPage() {
                 <Link href="/auth/signup?role=CLIENT" className="btn-primary text-base py-3 px-8 flex items-center gap-2 justify-center">
                   Hire AI Talent <ArrowRight className="w-5 h-5" />
                 </Link>
-                <Link href="/auth/signup?role=FREELANCER" className="btn-teal text-base py-3 px-8 flex items-center gap-2 justify-center">
+                <Link href="/auth/signup?role=FREELANCER" className="btn-primary text-base py-3 px-8 flex items-center gap-2 justify-center">
                   Start Earning <Zap className="w-5 h-5" />
                 </Link>
               </div>

@@ -9,12 +9,12 @@ export default function Providers({ children }: { children: React.ReactNode }) {
       {children}
       <Toaster
         position="top-right"
-        theme="dark"
+        theme="light"
         toastOptions={{
           style: {
-            background: "rgba(15, 22, 41, 0.9)",
-            border: "1px solid rgba(59, 130, 246, 0.2)",
-            color: "#e2e8f0",
+            background: "#ffffff",
+            border: "1px solid #e5e7eb",
+            color: "#111827",
             backdropFilter: "blur(12px)",
           },
         }}

@@ -24,16 +24,16 @@ export default function Navbar() {
   const isActive = (href: string) => pathname.startsWith(href);
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 glass border-b border-white/5">
+    <nav className="fixed top-0 left-0 right-0 z-50 glass border-b border-gray-200">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
           <Link href="/" className="flex items-center gap-2 group">
             <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center group-hover:shadow-lg group-hover:shadow-blue-500/25 transition-all">
-              <Cpu className="w-5 h-5 text-white" />
+              <Cpu className="w-5 h-5 text-gray-900" />
             </div>
             <span className="text-xl font-bold">
-              <span className="text-white">AI</span>
+              <span className="text-gray-900">AI</span>
               <span className="gradient-text">Hire</span>
             </span>
           </Link>
@@ -49,7 +49,7 @@ export default function Navbar() {
                     ? link.teal
                       ? "bg-teal-500/10 text-teal-400"
                       : "bg-blue-500/10 text-blue-400"
-                    : "text-slate-400 hover:text-white hover:bg-white/5"
+                    : "text-gray-600 hover:text-gray-900 hover:bg-gray-100"
                 }`}
               >
                 {link.icon && <link.icon className="w-4 h-4" />}
@@ -64,36 +64,36 @@ export default function Navbar() {
               <div className="relative">
                 <button
                   onClick={() => setProfileOpen(!profileOpen)}
-                  className="flex items-center gap-2 px-3 py-1.5 rounded-lg hover:bg-white/5 transition-all"
+                  className="flex items-center gap-2 px-3 py-1.5 rounded-lg hover:bg-gray-100 transition-all"
                 >
-                  <div className="w-8 h-8 rounded-full bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center text-white text-sm font-bold">
+                  <div className="w-8 h-8 rounded-full bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center text-gray-900 text-sm font-bold">
                     {session.user?.name?.[0]?.toUpperCase() || "U"}
                   </div>
-                  <span className="text-sm font-medium text-slate-300">
+                  <span className="text-sm font-medium text-gray-700">
                     {session.user?.name || "User"}
                   </span>
-                  <ChevronDown className="w-4 h-4 text-slate-500" />
+                  <ChevronDown className="w-4 h-4 text-gray-500" />
                 </button>
 
                 {profileOpen && (
-                  <div className="absolute right-0 top-full mt-2 w-56 glass rounded-xl border border-white/10 py-2 shadow-2xl">
-                    <div className="px-4 py-2 border-b border-white/5">
-                      <p className="text-sm font-medium text-white">{session.user?.name}</p>
-                      <p className="text-xs text-slate-500">{session.user?.email}</p>
-                      <span className="badge badge-blue mt-1 text-xs">
+                  <div className="absolute right-0 top-full mt-2 w-56 glass rounded-xl border border-gray-200 py-2 shadow-2xl">
+                    <div className="px-4 py-2 border-b border-gray-200">
+                      <p className="text-sm font-medium text-gray-900">{session.user?.name}</p>
+                      <p className="text-xs text-gray-500">{session.user?.email}</p>
+                      <span className="badge badge-primary mt-1 text-xs">
                         {(session.user as any)?.role || "USER"}
                       </span>
                     </div>
-                    <Link href="/dashboard" className="flex items-center gap-2 px-4 py-2 text-sm text-slate-400 hover:text-white hover:bg-white/5 transition-all" onClick={() => setProfileOpen(false)}>
+                    <Link href="/dashboard" className="flex items-center gap-2 px-4 py-2 text-sm text-gray-600 hover:text-gray-900 hover:bg-gray-100 transition-all" onClick={() => setProfileOpen(false)}>
                       <LayoutDashboard className="w-4 h-4" /> Dashboard
                     </Link>
-                    <Link href="/messages" className="flex items-center gap-2 px-4 py-2 text-sm text-slate-400 hover:text-white hover:bg-white/5 transition-all" onClick={() => setProfileOpen(false)}>
+                    <Link href="/messages" className="flex items-center gap-2 px-4 py-2 text-sm text-gray-600 hover:text-gray-900 hover:bg-gray-100 transition-all" onClick={() => setProfileOpen(false)}>
                       <MessageSquare className="w-4 h-4" /> Messages
                     </Link>
-                    <Link href="/settings" className="flex items-center gap-2 px-4 py-2 text-sm text-slate-400 hover:text-white hover:bg-white/5 transition-all" onClick={() => setProfileOpen(false)}>
+                    <Link href="/settings" className="flex items-center gap-2 px-4 py-2 text-sm text-gray-600 hover:text-gray-900 hover:bg-gray-100 transition-all" onClick={() => setProfileOpen(false)}>
                       <Settings className="w-4 h-4" /> Settings
                     </Link>
-                    <div className="border-t border-white/5 mt-1 pt-1">
+                    <div className="border-t border-gray-200 mt-1 pt-1">
                       <button
                         onClick={() => signOut()}
                         className="flex items-center gap-2 w-full px-4 py-2 text-sm text-red-400 hover:bg-red-500/10 transition-all"
@@ -119,7 +119,7 @@ export default function Navbar() {
           {/* Mobile menu button */}
           <button
             onClick={() => setMobileOpen(!mobileOpen)}
-            className="md:hidden p-2 rounded-lg hover:bg-white/5 text-slate-400"
+            className="md:hidden p-2 rounded-lg hover:bg-gray-100 text-gray-600"
           >
             {mobileOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
           </button>
@@ -128,7 +128,7 @@ export default function Navbar() {
 
       {/* Mobile menu */}
       {mobileOpen && (
-        <div className="md:hidden glass border-t border-white/5">
+        <div className="md:hidden glass border-t border-gray-200">
           <div className="px-4 py-4 space-y-1">
             {navLinks.map((link) => (
               <Link
@@ -138,17 +138,17 @@ export default function Navbar() {
                 className={`flex items-center gap-2 px-4 py-3 rounded-lg text-sm font-medium transition-all ${
                   isActive(link.href)
                     ? "bg-blue-500/10 text-blue-400"
-                    : "text-slate-400 hover:text-white hover:bg-white/5"
+                    : "text-gray-600 hover:text-gray-900 hover:bg-gray-100"
                 }`}
               >
                 {link.icon && <link.icon className="w-4 h-4" />}
                 {link.label}
               </Link>
             ))}
-            <div className="border-t border-white/5 pt-3 mt-3 space-y-2">
+            <div className="border-t border-gray-200 pt-3 mt-3 space-y-2">
               {session ? (
                 <>
-                  <Link href="/dashboard" className="flex items-center gap-2 px-4 py-3 rounded-lg text-sm text-slate-400 hover:text-white hover:bg-white/5" onClick={() => setMobileOpen(false)}>
+                  <Link href="/dashboard" className="flex items-center gap-2 px-4 py-3 rounded-lg text-sm text-gray-600 hover:text-gray-900 hover:bg-gray-100" onClick={() => setMobileOpen(false)}>
                     <LayoutDashboard className="w-4 h-4" /> Dashboard
                   </Link>
                   <button onClick={() => signOut()} className="flex items-center gap-2 w-full px-4 py-3 rounded-lg text-sm text-red-400 hover:bg-red-500/10">

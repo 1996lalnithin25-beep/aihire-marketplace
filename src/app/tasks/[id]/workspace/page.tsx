@@ -34,17 +34,17 @@ function TextLabelingWorkspace() {
   return (
     <div>
       <div className="glass rounded-2xl p-8 mb-6">
-        <p className="text-xs text-slate-500 mb-2">Item {current + 1} of {DEMO_ITEMS.length}</p>
-        <div className="p-6 rounded-xl bg-white/[0.03] border border-white/5 mb-6">
-          <p className="text-lg text-slate-200 leading-relaxed">&ldquo;{item?.text}&rdquo;</p>
+        <p className="text-xs text-gray-500 mb-2">Item {current + 1} of {DEMO_ITEMS.length}</p>
+        <div className="p-6 rounded-xl bg-white/[0.03] border border-gray-200 mb-6">
+          <p className="text-lg text-gray-900 leading-relaxed">&ldquo;{item?.text}&rdquo;</p>
         </div>
-        <p className="text-sm text-slate-400 mb-4">Select the sentiment of this review:</p>
+        <p className="text-sm text-gray-600 mb-4">Select the sentiment of this review:</p>
         <div className="flex flex-wrap gap-3">
           {item?.labels.map(label => (
             <button key={label} onClick={() => handleLabel(label)} className={`px-6 py-3 rounded-xl font-semibold text-sm transition-all ${
               label === "Positive" ? "bg-green-500/10 text-green-400 border border-green-500/30 hover:bg-green-500/20" :
               label === "Negative" ? "bg-red-500/10 text-red-400 border border-red-500/30 hover:bg-red-500/20" :
-              "bg-slate-500/10 text-slate-400 border border-slate-500/30 hover:bg-slate-500/20"
+              "bg-slate-500/10 text-gray-600 border border-slate-500/30 hover:bg-slate-500/20"
             }`}>{label}</button>
           ))}
         </div>
@@ -73,21 +73,21 @@ function RLHFWorkspace() {
 
   return (
     <div className="glass rounded-2xl p-8">
-      <p className="text-xs text-slate-500 mb-4">Comparison {current + 1} of {RLHF_PAIRS.length}</p>
+      <p className="text-xs text-gray-500 mb-4">Comparison {current + 1} of {RLHF_PAIRS.length}</p>
       <div className="p-4 rounded-xl bg-blue-500/5 border border-blue-500/10 mb-6">
         <p className="text-xs text-blue-400 mb-1">Prompt</p>
-        <p className="text-white font-medium">{pair?.prompt}</p>
+        <p className="text-gray-900 font-medium">{pair?.prompt}</p>
       </div>
-      <p className="text-sm text-slate-400 mb-4">Which response is better?</p>
+      <p className="text-sm text-gray-600 mb-4">Which response is better?</p>
       <div className="grid md:grid-cols-2 gap-4">
-        <button onClick={() => handleSelect("a")} className="p-5 rounded-xl bg-white/[0.02] border border-white/5 text-left hover:border-teal-500/30 hover:bg-teal-500/5 transition-all group">
+        <button onClick={() => handleSelect("a")} className="p-5 rounded-xl bg-white/[0.02] border border-gray-200 text-left hover:border-teal-500/30 hover:bg-teal-500/5 transition-all group">
           <p className="text-xs text-teal-400 mb-2 font-semibold">Response A</p>
-          <p className="text-sm text-slate-300">{pair?.a}</p>
-          <div className="mt-3 opacity-0 group-hover:opacity-100 transition-opacity"><span className="badge badge-teal text-xs"><ThumbsUp className="w-3 h-3" /> Select</span></div>
+          <p className="text-sm text-gray-700">{pair?.a}</p>
+          <div className="mt-3 opacity-0 group-hover:opacity-100 transition-opacity"><span className="badge badge-primary text-xs"><ThumbsUp className="w-3 h-3" /> Select</span></div>
         </button>
-        <button onClick={() => handleSelect("b")} className="p-5 rounded-xl bg-white/[0.02] border border-white/5 text-left hover:border-purple-500/30 hover:bg-purple-500/5 transition-all group">
+        <button onClick={() => handleSelect("b")} className="p-5 rounded-xl bg-white/[0.02] border border-gray-200 text-left hover:border-purple-500/30 hover:bg-purple-500/5 transition-all group">
           <p className="text-xs text-purple-400 mb-2 font-semibold">Response B</p>
-          <p className="text-sm text-slate-300">{pair?.b}</p>
+          <p className="text-sm text-gray-700">{pair?.b}</p>
           <div className="mt-3 opacity-0 group-hover:opacity-100 transition-opacity"><span className="badge badge-purple text-xs"><ThumbsUp className="w-3 h-3" /> Select</span></div>
         </button>
       </div>
@@ -103,10 +103,10 @@ function AudioRecordingWorkspace() {
 
   return (
     <div className="glass rounded-2xl p-8">
-      <p className="text-xs text-slate-500 mb-4">Recording {current + 1} of {prompts.length}</p>
+      <p className="text-xs text-gray-500 mb-4">Recording {current + 1} of {prompts.length}</p>
       <div className="p-6 rounded-xl bg-purple-500/5 border border-purple-500/10 mb-6 text-center">
         <Mic className="w-8 h-8 text-purple-400 mx-auto mb-3" />
-        <p className="text-lg text-white font-medium">{prompts[current]}</p>
+        <p className="text-lg text-gray-900 font-medium">{prompts[current]}</p>
       </div>
       <div className="flex justify-center gap-4">
         {!recording && !recorded && (
@@ -122,7 +122,7 @@ function AudioRecordingWorkspace() {
         {recorded && (
           <div className="flex gap-3">
             <button onClick={() => { setRecorded(false); }} className="btn-secondary flex items-center gap-2"><Mic className="w-4 h-4" /> Re-record</button>
-            <button onClick={() => { toast.success("Recording submitted!"); setRecorded(false); if (current < prompts.length - 1) setCurrent(c => c + 1); }} className="btn-teal flex items-center gap-2"><CheckCircle className="w-4 h-4" /> Submit</button>
+            <button onClick={() => { toast.success("Recording submitted!"); setRecorded(false); if (current < prompts.length - 1) setCurrent(c => c + 1); }} className="btn-primary flex items-center gap-2"><CheckCircle className="w-4 h-4" /> Submit</button>
           </div>
         )}
       </div>
@@ -141,16 +141,16 @@ export default function TaskWorkspacePage({ params }: { params: Promise<{ id: st
   return (
     <div className="workspace-focus min-h-screen">
       {/* Top bar */}
-      <div className="glass border-b border-white/5 px-6 py-3 flex items-center justify-between sticky top-16 z-40">
+      <div className="glass border-b border-gray-200 px-6 py-3 flex items-center justify-between sticky top-16 z-40">
         <div className="flex items-center gap-4">
-          <Link href="/tasks" className="text-slate-400 hover:text-white transition-colors"><ArrowLeft className="w-5 h-5" /></Link>
-          <div><p className="text-sm font-semibold text-white">{taskNames[id] || "Task"}</p><p className="text-xs text-slate-500">Task Workspace</p></div>
+          <Link href="/tasks" className="text-gray-600 hover:text-gray-900 transition-colors"><ArrowLeft className="w-5 h-5" /></Link>
+          <div><p className="text-sm font-semibold text-gray-900">{taskNames[id] || "Task"}</p><p className="text-xs text-gray-500">Task Workspace</p></div>
         </div>
         <div className="flex items-center gap-6">
-          <div className="text-center"><p className="text-xs text-slate-500">Completed</p><p className="text-sm font-bold text-teal-400">{completed} / 10</p></div>
-          <div className="text-center"><p className="text-xs text-slate-500">Earned</p><p className="text-sm font-bold text-green-400"><DollarSign className="w-3 h-3 inline" />{earnings.toFixed(2)}</p></div>
-          <div className="w-32"><div className="flex justify-between text-xs mb-1"><span className="text-slate-500">Progress</span><span className="text-teal-400">{Math.round((completed/10)*100)}%</span></div>
-            <div className="w-full h-2 rounded-full bg-white/5"><div className="h-full rounded-full bg-gradient-to-r from-teal-500 to-emerald-400 transition-all" style={{width:`${(completed/10)*100}%`}} /></div>
+          <div className="text-center"><p className="text-xs text-gray-500">Completed</p><p className="text-sm font-bold text-teal-400">{completed} / 10</p></div>
+          <div className="text-center"><p className="text-xs text-gray-500">Earned</p><p className="text-sm font-bold text-green-400"><DollarSign className="w-3 h-3 inline" />{earnings.toFixed(2)}</p></div>
+          <div className="w-32"><div className="flex justify-between text-xs mb-1"><span className="text-gray-500">Progress</span><span className="text-teal-400">{Math.round((completed/10)*100)}%</span></div>
+            <div className="w-full h-2 rounded-full bg-gray-100"><div className="h-full rounded-full bg-gradient-to-r from-teal-500 to-emerald-400 transition-all" style={{width:`${(completed/10)*100}%`}} /></div>
           </div>
         </div>
       </div>
@@ -162,9 +162,9 @@ export default function TaskWorkspacePage({ params }: { params: Promise<{ id: st
         {type === "recording" && <AudioRecordingWorkspace />}
         {(type === "transcription" || type === "survey") && (
           <div className="glass rounded-2xl p-8 text-center">
-            <p className="text-slate-400">Transcription / Survey workspace coming soon</p>
+            <p className="text-gray-600">Transcription / Survey workspace coming soon</p>
             <div className="mt-4"><textarea className="input-dark min-h-[200px] resize-y" placeholder="Type your transcription here..." /></div>
-            <button className="btn-teal mt-4" onClick={() => toast.success("Submitted!")}>Submit</button>
+            <button className="btn-primary mt-4" onClick={() => toast.success("Submitted!")}>Submit</button>
           </div>
         )}
       </div>

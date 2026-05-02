@@ -44,14 +44,14 @@ export default function DashboardPage() {
         {/* Header */}
         <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-8">
           <div>
-            <h1 className="text-3xl font-bold text-white mb-1">Welcome back, {userName.split(" ")[0]} 👋</h1>
-            <p className="text-slate-400">Here&apos;s what&apos;s happening with your {role === "CLIENT" ? "projects" : "work"}</p>
+            <h1 className="text-3xl font-bold text-gray-900 mb-1">Welcome back, {userName.split(" ")[0]} 👋</h1>
+            <p className="text-gray-600">Here&apos;s what&apos;s happening with your {role === "CLIENT" ? "projects" : "work"}</p>
           </div>
           <div className="flex gap-3">
             {role === "CLIENT" ? (
               <Link href="/jobs/post" className="btn-primary flex items-center gap-2"><Plus className="w-4 h-4" /> Post a Job</Link>
             ) : (
-              <Link href="/tasks" className="btn-teal flex items-center gap-2"><Zap className="w-4 h-4" /> Find Tasks</Link>
+              <Link href="/tasks" className="btn-primary flex items-center gap-2"><Zap className="w-4 h-4" /> Find Tasks</Link>
             )}
           </div>
         </div>
@@ -66,8 +66,8 @@ export default function DashboardPage() {
                 </div>
                 <ArrowUpRight className="w-4 h-4 text-green-400" />
               </div>
-              <p className="text-2xl font-bold text-white">{stat.value}</p>
-              <p className="text-sm text-slate-500">{stat.label}</p>
+              <p className="text-2xl font-bold text-gray-900">{stat.value}</p>
+              <p className="text-sm text-gray-500">{stat.label}</p>
             </div>
           ))}
         </div>
@@ -78,26 +78,26 @@ export default function DashboardPage() {
             {/* Recent Jobs/Applications */}
             <div className="glass rounded-2xl p-6">
               <div className="flex items-center justify-between mb-4">
-                <h2 className="text-lg font-semibold text-white">{role === "CLIENT" ? "My Jobs" : "Applications"}</h2>
+                <h2 className="text-lg font-semibold text-gray-900">{role === "CLIENT" ? "My Jobs" : "Applications"}</h2>
                 <Link href="/jobs" className="text-sm text-blue-400 hover:text-blue-300 flex items-center gap-1">View All <ChevronRight className="w-4 h-4" /></Link>
               </div>
               <div className="space-y-3">
                 {recentJobs.map((job, i) => (
-                  <div key={i} className="flex items-center justify-between p-4 rounded-xl bg-white/[0.02] border border-white/5 hover:border-white/10 transition-all">
+                  <div key={i} className="flex items-center justify-between p-4 rounded-xl bg-white/[0.02] border border-gray-200 hover:border-gray-200 transition-all">
                     <div className="flex items-center gap-3">
                       <div className={`w-2 h-2 rounded-full ${job.status === "OPEN" ? "bg-green-400" : job.status === "IN_PROGRESS" ? "bg-amber-400" : "bg-slate-500"}`} />
                       <div>
-                        <p className="text-sm font-medium text-white">{job.title}</p>
+                        <p className="text-sm font-medium text-gray-900">{job.title}</p>
                         <div className="flex items-center gap-2 mt-0.5">
                           <span className={`text-xs ${job.type === "DATA_COLLECTION" ? "text-teal-400" : "text-blue-400"}`}>{job.type === "DATA_COLLECTION" ? "Data Task" : "AI Project"}</span>
                           <span className="text-xs text-slate-600">•</span>
-                          <span className="text-xs text-slate-500">{job.proposals} proposals</span>
+                          <span className="text-xs text-gray-500">{job.proposals} proposals</span>
                         </div>
                       </div>
                     </div>
                     <div className="text-right">
-                      <p className="text-sm font-semibold text-white">{job.budget}</p>
-                      <span className={`badge text-xs ${job.status === "OPEN" ? "badge-green" : job.status === "IN_PROGRESS" ? "badge-amber" : "badge-blue"}`}>{job.status.replace("_", " ")}</span>
+                      <p className="text-sm font-semibold text-gray-900">{job.budget}</p>
+                      <span className={`badge text-xs ${job.status === "OPEN" ? "badge-green" : job.status === "IN_PROGRESS" ? "badge-amber" : "badge-primary"}`}>{job.status.replace("_", " ")}</span>
                     </div>
                   </div>
                 ))}
@@ -106,7 +106,7 @@ export default function DashboardPage() {
 
             {/* Dataset Progress (Client) or Earnings Chart placeholder */}
             <div className="glass rounded-2xl p-6">
-              <h2 className="text-lg font-semibold text-white mb-4">{role === "CLIENT" ? "Dataset Progress" : "Earnings Overview"}</h2>
+              <h2 className="text-lg font-semibold text-gray-900 mb-4">{role === "CLIENT" ? "Dataset Progress" : "Earnings Overview"}</h2>
               {role === "CLIENT" ? (
                 <div className="space-y-4">
                   {[
@@ -115,13 +115,13 @@ export default function DashboardPage() {
                     { name: "RLHF Rankings", progress: 45, items: "1,350 / 3,000" },
                   ].map(d => (
                     <div key={d.name}>
-                      <div className="flex justify-between text-sm mb-1"><span className="text-slate-300">{d.name}</span><span className="text-teal-400">{d.items}</span></div>
-                      <div className="w-full h-3 rounded-full bg-white/5"><div className="h-full rounded-full bg-gradient-to-r from-teal-500 to-emerald-400 transition-all progress-bar" style={{width:`${d.progress}%`}} /></div>
+                      <div className="flex justify-between text-sm mb-1"><span className="text-gray-700">{d.name}</span><span className="text-teal-400">{d.items}</span></div>
+                      <div className="w-full h-3 rounded-full bg-gray-100"><div className="h-full rounded-full bg-gradient-to-r from-teal-500 to-emerald-400 transition-all progress-bar" style={{width:`${d.progress}%`}} /></div>
                     </div>
                   ))}
                 </div>
               ) : (
-                <div className="h-48 flex items-center justify-center text-slate-500">
+                <div className="h-48 flex items-center justify-center text-gray-500">
                   <div className="text-center">
                     <BarChart3 className="w-12 h-12 mx-auto mb-2 text-slate-600" />
                     <p className="text-sm">Earnings chart will render with Recharts</p>
@@ -137,19 +137,19 @@ export default function DashboardPage() {
             {/* Messages */}
             <div className="glass rounded-2xl p-6">
               <div className="flex items-center justify-between mb-4">
-                <h2 className="text-lg font-semibold text-white">Messages</h2>
+                <h2 className="text-lg font-semibold text-gray-900">Messages</h2>
                 <Link href="/messages" className="text-sm text-blue-400 hover:text-blue-300">View All</Link>
               </div>
               <div className="space-y-3">
                 {recentMessages.map((m, i) => (
-                  <div key={i} className={`p-3 rounded-xl transition-all cursor-pointer ${m.unread ? "bg-blue-500/5 border border-blue-500/10" : "bg-white/[0.02] border border-white/5"} hover:border-blue-500/20`}>
+                  <div key={i} className={`p-3 rounded-xl transition-all cursor-pointer ${m.unread ? "bg-blue-500/5 border border-blue-500/10" : "bg-white/[0.02] border border-gray-200"} hover:border-blue-500/20`}>
                     <div className="flex items-center gap-2 mb-1">
-                      <div className="w-6 h-6 rounded-full bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center text-white text-xs font-bold">{m.from[0]}</div>
-                      <span className="text-sm font-medium text-white">{m.from}</span>
+                      <div className="w-6 h-6 rounded-full bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center text-gray-900 text-xs font-bold">{m.from[0]}</div>
+                      <span className="text-sm font-medium text-gray-900">{m.from}</span>
                       {m.unread && <div className="w-2 h-2 rounded-full bg-blue-400" />}
                       <span className="text-xs text-slate-600 ml-auto">{m.time}</span>
                     </div>
-                    <p className="text-xs text-slate-500 truncate">{m.msg}</p>
+                    <p className="text-xs text-gray-500 truncate">{m.msg}</p>
                   </div>
                 ))}
               </div>
@@ -157,7 +157,7 @@ export default function DashboardPage() {
 
             {/* Quick Actions */}
             <div className="glass rounded-2xl p-6">
-              <h2 className="text-lg font-semibold text-white mb-4">Quick Actions</h2>
+              <h2 className="text-lg font-semibold text-gray-900 mb-4">Quick Actions</h2>
               <div className="space-y-2">
                 {(role === "CLIENT" ? [
                   { label: "Post a New Job", href: "/jobs/post", icon: Plus },
@@ -170,9 +170,9 @@ export default function DashboardPage() {
                   { label: "Update Profile", href: "/settings", icon: Users },
                   { label: "View Earnings", href: "/dashboard", icon: DollarSign },
                 ]).map(a => (
-                  <Link key={a.label} href={a.href} className="flex items-center gap-3 p-3 rounded-xl bg-white/[0.02] border border-white/5 hover:border-white/10 transition-all">
-                    <a.icon className="w-4 h-4 text-slate-400" />
-                    <span className="text-sm text-slate-300">{a.label}</span>
+                  <Link key={a.label} href={a.href} className="flex items-center gap-3 p-3 rounded-xl bg-white/[0.02] border border-gray-200 hover:border-gray-200 transition-all">
+                    <a.icon className="w-4 h-4 text-gray-600" />
+                    <span className="text-sm text-gray-700">{a.label}</span>
                     <ChevronRight className="w-4 h-4 text-slate-600 ml-auto" />
                   </Link>
                 ))}
